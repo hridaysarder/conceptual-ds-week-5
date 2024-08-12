@@ -13,6 +13,18 @@ public:
     }
 };
 
+void insertHead(int val, Node *&head)
+{
+    Node *newNode = new Node(val);
+    if (head == NULL)
+    {
+        head = newNode;
+        return;
+    }
+    newNode->next = head;
+    head = newNode;
+}
+
 void insertTail(int val, Node *&head)
 {
     Node *newNode = new Node(val);
@@ -58,7 +70,7 @@ int main()
             break;
         insertTail(val, head);
     }
-
+    insertHead(4, head);
     printList(head);
     return 0;
 }
