@@ -25,6 +25,23 @@ void insertHead(int val, Node *&head)
     head = newNode;
 }
 
+void insertAny(int pos, int val, Node *&head)
+{
+    if (pos == 0)
+    {
+        insertHead(val, head);
+    }
+
+    Node *newNode = new Node(val);
+    Node *temp = head;
+    for (int i = 0; i < pos - 1; i++)
+    {
+        temp = temp->next;
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
 void insertTail(int val, Node *&head)
 {
     Node *newNode = new Node(val);
@@ -70,7 +87,10 @@ int main()
             break;
         insertTail(val, head);
     }
-    insertHead(4, head);
+    // insertHead(4, head);
+
+    insertAny(1,10,head);
+    insertAny(3,20,head);
     printList(head);
     return 0;
 }
